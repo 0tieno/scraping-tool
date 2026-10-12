@@ -1,0 +1,328 @@
+# Kipeo Afrika opportunity profile — the single source of truth for relevance scoring.
+# Edit freely, then reload from Settings (or `npm run cli -- rescore`).
+#
+# Kipeo's business: organisations PAY KIPEO to BUILD software for them and then MAINTAIN it.
+# The score therefore asks four questions:
+#   1. Is this a build-or-maintain software job?      (core capabilities — the dominant signal)
+#   2. Is the buyer the kind of organisation we serve? (buyers — SACCOs, schools, hospitals, NGOs, SMEs…)
+#   3. Can we realistically respond?                   (geography, engagement type, deadline)
+#   4. Is it actually something else?                  (penalties — hardware supply, policy work, staff jobs, grants)
+#
+# Matching rules: terms are case-insensitive whole-word/phrase matches (hyphens and spaces are
+# interchangeable); `acronyms` are case-sensitive; title hits weigh ~4x description hits.
+
+company:
+  name: Kipeo Afrika
+  website: https://kipeoafrika.com
+  base: Nairobi, Kenya
+  pitch: >-
+    Kipeo Afrika is a Nairobi-based software company. Organisations pay Kipeo to design and build
+    custom software for them — business applications, web and mobile apps, portals, management
+    information systems, integrations and workflow automation — and then to host, support and
+    maintain those systems on an ongoing basis. Kipeo also brings cloud/DevSecOps and application
+    security expertise, and trains client teams through Kipeo Academy. Ideal clients are SACCOs and
+    microfinance institutions, schools, colleges and universities, hospitals and clinics, NGOs and
+    faith-based organisations, property managers, SMEs, associations and county-level public bodies.
+    Kipeo is early-stage and building its case-study library.
+
+capabilities:
+  # ---------- core: what Kipeo is paid for ----------
+  - id: software-build
+    label: Custom software development
+    role: core
+    strong:
+      - software development
+      - application development
+      - system development
+      - systems development
+      - development of a system
+      - development of system
+      - development of an integrated
+      - design and development
+      - design, development
+      - development and implementation
+      - design and implementation of
+      - development, implementation
+      - develop a system
+      - develop an app
+      - develop a web
+      - develop a mobile
+      - developer
+      - full stack
+      - web application
+      - web portal
+      - online portal
+      - web based system
+      - mobile application
+      - mobile app
+      - android app
+      - website development
+      - website design
+      - redesign of website
+      - website redesign
+      - management information system
+      - information management system
+      - management system
+      - information system
+      - database development
+      - database system
+      - customised software
+      - customized software
+      - bespoke software
+      - custom software
+      - automation of
+      - automated system
+      - digitization of
+      - digitisation of
+      - digitalization of
+      - digitalisation of
+      - e-services
+      - online application system
+      - e-procurement system
+      - e-learning platform
+      - learning management system
+      - school management system
+      - student management system
+      - hospital management system
+      - health information system
+      - electronic medical records
+      - electronic health records
+      - sacco management system
+      - core banking system
+      - loans management system
+      - loan management system
+      - microfinance system
+      - property management system
+      - human resource management system
+      - hr management system
+      - payroll system
+      - records management system
+      - document management system
+      - case management system
+      - customer relationship management
+      - membership management system
+      - inventory management system
+      - point of sale system
+      - billing system
+      - revenue collection system
+      - erp system
+      - erp implementation
+      - enterprise resource planning
+      - integrated financial management
+      - system integration
+      - systems integration
+      - api integration
+      - integration of systems
+      - api development
+      - chatbot
+      - dashboard development
+      - workflow automation
+      - process automation
+      - legacy system
+      - system upgrade
+      - upgrade of system
+      - upgrade of the system
+      - odoo
+    moderate:
+      - software
+      - system
+      - application
+      - website
+      - portal
+      - platform
+      - database
+      - digital
+      - automation
+      - integration
+      - dashboard
+      - ict
+    acronyms: [MIS, HMIS, EMIS, IFMIS, ERP, CRM, LMS, EMR, EHR, HRMIS, POS, API, APIs, USSD, DHIS2]
+
+  - id: software-maintenance
+    label: Software support & maintenance
+    role: core
+    strong:
+      - maintenance of software
+      - software maintenance
+      - maintenance of the system
+      - maintenance of system
+      - maintenance of the software
+      - support and maintenance of
+      - maintenance and support of
+      - maintenance and support services
+      - support and maintenance services
+      - annual maintenance of
+      - annual maintenance contract
+      - technical support of
+      - application support
+      - system support
+      - software support
+      - system administration
+      - managed services
+      - managed it services
+      - hosting and maintenance
+      - website hosting
+      - website maintenance
+      - maintenance of website
+      - hosting services
+      - cloud hosting
+      - post-implementation support
+      - helpdesk
+      - help desk
+      - service desk
+      - ict support services
+      - ict managed services
+      - licence renewal
+      - license renewal
+      - software licences
+      - software licenses
+      - customization of
+      - customisation of
+    moderate:
+      - maintenance
+      - support services
+      - hosting
+      - service level agreement
+      - renewal
+    acronyms: [AMC, SLA, ITSM]
+
+  # ---------- secondary: supporting expertise, never enough on its own ----------
+  - id: cloud-devsecops
+    label: Cloud & DevSecOps
+    role: secondary
+    strong: [cloud migration, cloud services, cloud infrastructure, devops, devsecops, ci/cd, kubernetes, microsoft azure, amazon web services, google cloud, disaster recovery, backup and recovery, data migration]
+    moderate: [cloud, backup]
+    acronyms: [AWS, Azure, IaC, SaaS, PaaS]
+
+  - id: cybersecurity
+    label: Cybersecurity
+    role: secondary
+    strong: [cybersecurity, cyber security, information security, penetration testing, vulnerability assessment, application security, ict security, data protection, iso 27001]
+    moderate: [encryption]
+    acronyms: [VAPT, ISMS, AppSec]
+
+  - id: data
+    label: Data & reporting
+    role: secondary
+    strong: [business intelligence, data analytics, reporting system, data warehouse, data management system, digital data collection, mobile data collection, monitoring and evaluation system]
+    moderate: [analytics, reporting, data collection]
+    acronyms: [BI, KoBo, ODK]
+
+  - id: training
+    label: Kipeo Academy (training)
+    role: secondary
+    strong: [ict training, software training, end user training, end-user training, digital skills training, cybersecurity training, system training]
+    moderate: [training, capacity building]
+    acronyms: []
+
+# Who is paying? Kipeo's sweet spot is organisations big enough to pay for software but not
+# mega-programmes. The highest-weight matching group wins; title and buyer name are matched.
+buyers:
+  default: 0.55
+  groups:
+    - label: SACCOs & microfinance
+      weight: 1.0
+      terms: [sacco, saccos, savings and credit, cooperative society, co-operative society, cooperative, microfinance, mfi, credit union, chama, investment group]
+    - label: Schools, colleges & universities
+      weight: 1.0
+      terms: [school, academy, college, polytechnic, university, institute, tvet, training institute, ecde]
+    - label: Hospitals & clinics
+      weight: 1.0
+      terms: [hospital, clinic, medical centre, medical center, health centre, nursing home, pharmacy, mission hospital]
+    - label: NGOs & faith-based organisations
+      weight: 1.0
+      terms: [ngo, non-governmental, foundation, charity, trust, church, diocese, catholic, anglican, mosque, world vision, red cross, save the children, plan international, care international, mercy corps, oxfam, amref]
+    - label: SMEs, associations & property
+      weight: 1.0
+      terms: [limited, ltd, company, enterprises, association, society, chamber, federation, property management, real estate, housing, estate, hotel, insurance]
+    - label: County & local public bodies
+      weight: 0.85
+      terms: [county government, county assembly, county, water and sanitation company, water services, sub-county, municipality, municipal, board, fund]
+    - label: National government & parastatals
+      weight: 0.6
+      terms: [ministry, state department, authority, commission, agency, corporation, national, government, parliament, judiciary]
+    - label: Multilateral & regional programmes
+      weight: 0.15
+      terms: [world bank, african union, union commission, african development bank, regional, multinational, igad, comesa, sadc, ecowas, east african community, united nations, unicef, undp, unops, secretariat]
+
+# Geographic priority (0..1). Unknown location scores `default`.
+geography:
+  default: 0.4
+  groups:
+    - label: Kenya
+      weight: 1.0
+      terms: [kenya, nairobi, mombasa, kisumu, nakuru, eldoret, thika, machakos, nyeri, meru, kakamega, kisii]
+    - label: East Africa
+      weight: 0.6
+      terms: [uganda, tanzania, rwanda, burundi, ethiopia, somalia, south sudan, kampala, dar es salaam, kigali, addis ababa, east africa, eastern africa]
+    - label: Remote / anywhere
+      weight: 0.6
+      terms: [remote, home-based, home based, virtual]
+    - label: Rest of Africa
+      weight: 0.3
+      terms: [africa, african, nigeria, ghana, south africa, zambia, malawi, mozambique, zimbabwe, botswana, namibia, egypt, morocco, senegal, cameroon, congo, madagascar, sierra leone, liberia, gambia, lesotho, eswatini, angola, benin, togo, burkina faso, mali, niger, chad, guinea, sudan]
+    - label: Outside Africa
+      weight: 0.0
+      terms: [asia, latin america, caribbean, europe, pacific, middle east, philippines, lebanon, ukraine, india, pakistan, bangladesh, indonesia, vietnam, afghanistan, iraq, syria, jordan, yemen, nepal, myanmar, haiti, colombia, brazil, mexico]
+
+# Engagement-type preference (0..1).
+opportunityTypes:
+  rfp: 1.0
+  rfq: 0.9
+  eoi: 0.9
+  tender: 0.85
+  consultancy: 0.8
+  framework: 0.8
+  notice: 0.3
+  grant: 0.0
+  other: 0.5
+
+# Procurement category multiplier on the type score (longest matching key wins).
+categories:
+  goods: 0.5
+  works: 0.0
+  services: 1.0
+  non consultancy services: 1.0
+  non-consulting services: 1.0
+  consultancy services: 0.9
+  consulting services: 0.9
+
+# Notices in other languages are penalised (Kipeo bids in English).
+languages:
+  accepted: [en]
+  penalty: 15
+
+# Things that look relevant but aren't Kipeo's business. `waivedByCore: true` drops the penalty
+# when the TITLE clearly names software build/maintenance work (e.g. "Supply and installation of
+# an ERP system" is fine; "Supply of laptops and printers" is not). Each group applies once.
+penalties:
+  - id: hardware
+    label: Hardware / equipment supply
+    points: 30
+    waivedByCore: true
+    terms: [supply and delivery, supply, delivery and installation, equipment, computers, laptops, desktops, tablets, printers, photocopiers, servers, hardware, cctv, wi-fi, wifi, routers, switches, network equipment, cabling, structured cabling, backbone, fibre, fiber, satellite, radio, ups, generator, solar, x-ray, biometric devices, kiosks, toner, cartridges, furniture]
+  - id: advisory
+    label: Policy / strategy / study work
+    points: 25
+    waivedByCore: true
+    terms: [policy, strategy, strategic plan, framework for, standards, governance, feasibility study, master plan, baseline survey, baseline study, endline, end-term evaluation, mid-term evaluation, evaluation of, impact assessment, research, study, situational analysis, needs assessment, review of, audit of financial statements, technical assistance, transaction advisor, advisory services]
+  - id: staff-role
+    label: Staff job or individual post
+    points: 45
+    waivedByCore: false
+    terms: [individual consultant, national consultant, international consultant, vacancy, vacancies, job opening, position of, officer, manager, coordinator, specialist, associate, assistant, director, intern, internship, volunteer, fellow, nurse, driver, lead, supervisor, head of, fixed-term, fixed term, expert, trainee, graduate, graduate trainee]
+  - id: not-a-client
+    label: Grant, scholarship or competition (not a paying client)
+    points: 45
+    waivedByCore: false
+    terms: [grant, grants, call for proposals, funding opportunity, scholarship, fellowship, award, awards, prize, competition, accelerator, incubator, apply now, programme application, program application]
+  - id: out-of-lane
+    label: Construction, goods or unrelated services
+    points: 30
+    waivedByCore: true
+    terms: [construction of, civil works, rehabilitation of, road, roads, borehole, drilling, fuel, motor vehicle, motor vehicles, tyres, foodstuff, foodstuffs, food items, catering, cleaning services, fumigation, security guard, guarding services, security services, uniforms, stationery, pharmaceuticals, drugs, medical equipment, laboratory, reagents, fertilizer, seeds, livestock, building materials, plumbing, electrical works, streetlights, street lights, water supply, sewer, irrigation, toilet, fencing, insurance cover, medical cover, disposal of, sale of, hire of, travel agency, air tickets, printing, advertising, branding, recruitment of staff, poultry, agro-processing, lifts, air conditioning]
+
+# Minimum lead time before a deadline for a bid to be realistic.
+deadline:
+  comfortableDays: 10
+  minimumDays: 3

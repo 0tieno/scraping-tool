@@ -1,0 +1,1 @@
+{"root":["./src/app.tsx","./src/api.ts","./src/format.ts","./src/hooks.ts","./src/main.tsx","./src/types.ts","./src/components/ui.tsx","./src/pages/opportunitydetail.tsx","./src/pages/pipeline.tsx","./src/pages/radar.tsx","./src/pages/settings.tsx","./src/pages/sources.tsx"],"version":"6.0.3"}

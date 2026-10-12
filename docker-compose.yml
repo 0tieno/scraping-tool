@@ -1,0 +1,15 @@
+services:
+  radar:
+    build: .
+    image: kipeo-opportunity-radar:latest
+    restart: unless-stopped
+    env_file: .env
+    ports:
+      - "8080:8080"
+    volumes:
+      - radar-data:/app/data
+      # Mounted read-only so profile/source edits apply via "Reload config & rescore" without rebuilding.
+      - ./config:/app/config:ro
+
+volumes:
+  radar-data:

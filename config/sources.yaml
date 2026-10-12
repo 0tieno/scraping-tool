@@ -1,0 +1,122 @@
+# Opportunity sources. Built-in adapters are configured by id; `feeds` and `pages` let you add
+# new RSS feeds or simple listing pages without writing code.
+#
+# Every source is fetched politely: robots.txt and Crawl-delay are honoured, requests are
+# throttled per host, and bot-protection challenges are reported, never bypassed.
+
+builtin:
+  # Kenya Public Procurement Information Portal (PPIP) — every active national & county tender.
+  ppip-kenya:
+    enabled: true
+    maxPages: 20          # 50 tenders per page
+
+  # World Bank procurement notices (IFBs, REOIs, RFPs) for borrower projects.
+  # Off by default: mostly large government/regional programmes and policy consultancies rather
+  # than organisations hiring a software company. Enable to watch for occasional system-build work.
+  world-bank:
+    enabled: false
+    maxRows: 600
+    # Exact World Bank country/region names (as used in project_ctry_name). Empty list = all countries.
+    countries:
+      - Kenya
+      - Uganda
+      - Tanzania
+      - Rwanda
+      - Burundi
+      - Ethiopia
+      - "Somalia, Federal Republic of"
+      - South Sudan
+      - Djibouti
+      - "Congo, Democratic Republic of"
+      - Nigeria
+      - Ghana
+      - Zambia
+      - Malawi
+      - Mozambique
+      - Zimbabwe
+      - South Africa
+      - Botswana
+      - Namibia
+      - Lesotho
+      - Eswatini
+      - Madagascar
+      - Mauritius
+      - Seychelles
+      - Senegal
+      - "Cote d'Ivoire"
+      - Cameroon
+      - Sierra Leone
+      - Liberia
+      - Horn of Africa
+      - Eastern and Southern Africa
+      - Western and Central Africa
+      - Africa
+    excludeNoticeTypes: [Contract Award]
+
+  # African Development Bank project procurement notices (RSS).
+  # Disabled: as of Oct 2026 AfDB's Cloudflare challenges automated HTTP clients on this feed.
+  # The radar never bypasses bot protection; enable this if AfDB allow-lists your crawler.
+  afdb:
+    enabled: false
+
+  # ReliefWeb consultancies/tenders. Requires RELIEFWEB_APPNAME (an approved appname).
+  reliefweb:
+    enabled: false
+    countries: [Kenya, Uganda, Tanzania, Rwanda, Ethiopia, Somalia, South Sudan]
+
+# Generic RSS/Atom feeds. `type` is the default opportunity type; titles such as "Expression of
+# Interest…" or "Request for Proposals…" override it automatically.
+feeds:
+  # NGO Jobs in Africa — NGOs, MFIs and faith-based organisations post EOIs/RFPs for systems here
+  # (e.g. "EOI: Procurement of a Loans Management System for a Rural Based Informal MFI").
+  # Each feed returns only the latest 10 items, so this source benefits from frequent scrapes.
+  - id: ngojobs-consultancy
+    name: NGO Jobs in Africa — Consultancies
+    url: https://ngojobsinafrica.com/job-category/consultant/feed/
+    homepage: https://ngojobsinafrica.com
+    type: consultancy
+    enabled: true
+  - id: ngojobs-it
+    name: NGO Jobs in Africa — Information Technology
+    url: https://ngojobsinafrica.com/job-category/information-technology/feed/
+    homepage: https://ngojobsinafrica.com
+    type: consultancy
+    enabled: true
+  - id: ngojobs-procurement
+    name: NGO Jobs in Africa — Procurement notices
+    url: https://ngojobsinafrica.com/job-category/procurement-supply/feed/
+    homepage: https://ngojobsinafrica.com
+    type: tender
+    enabled: true
+  - id: ngojobs-latest
+    name: NGO Jobs in Africa — All latest
+    url: https://ngojobsinafrica.com/media-rss/
+    homepage: https://ngojobsinafrica.com
+    type: other
+    enabled: true
+
+  # Off: grant calls are funding FOR NGOs, not clients paying Kipeo.
+  - id: fundsforngos
+    name: fundsforNGOs
+    url: https://www2.fundsforngos.org/feed/
+    homepage: https://www2.fundsforngos.org
+    type: grant
+    enabled: false
+
+# Generic listing pages scraped with CSS selectors. Fields are relative to `item`.
+# Use `@attr` to read an attribute (e.g. "a@href"). Example (disabled):
+pages:
+  - id: example-org-tenders
+    name: Example Org — Tenders
+    url: https://example.org/tenders
+    enabled: false
+    type: tender
+    country: Kenya
+    selectors:
+      item: "table.tenders tbody tr"
+      title: "td:nth-child(2)"
+      link: "td:nth-child(2) a@href"
+      deadline: "td:nth-child(4)"
+      reference: "td:nth-child(1)"
+      buyer: ""
+      description: ""
